@@ -12,6 +12,8 @@ function start() {
 }
 start();
 
+
+
 let appData = {
     budget: money,
     timedata: time,
