@@ -1,33 +1,31 @@
 'use strict';
 
-let box = document.getElementById('box'),
-    btn = document.getElementsByTagName('button'),
-    circle = document.getElementsByClassName('circle'),
-    heart = document.querySelectorAll('.heart'),
-    oneHeart = document.querySelector('.heart'),
-    wrapper = document.querySelector('.wrapper');
-console.log(wrapper);
+let button = document.querySelector('.buttonAn'),
+    item = document.querySelector('.item');
 
-box.style.backgroundColor = '#000';
-btn[1].style.borderRadius = '100%';
-circle[0].style.background = 'red';
-circle[1].style.background = 'orange';
-circle[2].style.background = 'green';
+function myAnimation() {
+    let pos = 0;
 
-// for ( let i = 0; i < heart.length; i++) {
-//     heart[i].style.background = 'red';
-// }
-// heart.forEach(function (item) {
-//     item.style.background = 'red';
-// });
+    let id = setInterval(frame, 10);
 
-let div = document.createElement('div');
+    function frame() {
+        if (pos == 450) {
+            clearInterval(id);
+        }else {
+            pos++;
+            item.style.top = pos + 'px';
+            item.style.left = pos + 'px';
+        }
+    }
+}
+button.addEventListener('click', myAnimation);
 
-div.classList.add('black');
 
-// document.body.appendChild(div);
-div.innerText = 'Hello Word'
-wrapper.appendChild(div);
-wrapper.insertBefore(div, circle[0]);
-wrapper.removeChild(circle[2]);
-// document.body.replaceChild(btn[1], wrapper);
+let btnBlock = document.querySelector('.btn-block'),
+    btn = document.getElementsByTagName('button');
+
+btnBlock.addEventListener('click', function (event) {
+   if (event.target && event.target.tagName == 'BUTTON') {
+       console.log('Hello');
+   }
+});
