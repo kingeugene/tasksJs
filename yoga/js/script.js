@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //Timer
 
-    let deadline = '2019-03-12';
+    let deadline = '2019-03-18';
     
     function getTimeReaming(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -92,4 +92,52 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     setClock('timer', deadline);
 
+    //Modal
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        cloce = document.querySelector('.popup-close'),
+        descriptionBtn = document.querySelector('.description-btn'),
+        main = document.querySelector('body');
+
+    main.addEventListener('click', function () {
+            let target = event.target;
+            if (target == more || target == descriptionBtn) {
+                overlay.style.display = 'block';
+                this.classList.add('more-splash');
+                document.body.style.overflow = 'hidden';
+            }
+
+    });
+    cloce.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
+
 });
+// End Modal
+
+class  Option {
+
+    constructor( heightEL, width, bg, fontSize, textAlign) {
+         this.blockItem = document.createElement('div');
+        this.blockItem.style.height = heightEL;
+        this.blockItem.style.width = width;
+        this.blockItem.style.background = bg;
+        this.blockItem.style.fontSize = fontSize;
+        this.blockItem.style.textAlign = textAlign;
+
+
+
+    }
+
+    appendEl(text) {
+document.body.append(this.blockItem);
+this.blockItem.textContent = text;
+    }
+}
+let user = new Option('20px', '30px', 'red', '16px', 'center'),
+    login = new Option('50px', '100%', 'yellow', '30px', 'center');
+user.appendEl('lalalalalalalal');
+login.appendEl('lorem');
